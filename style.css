@@ -8,12 +8,23 @@ body {
   margin: 0;
 }
 
+h1 {
+  margin: 30px 0 60px 0;
+}
+
 /* GAMEBOARD ----------------------------- */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid magenta;
+}
 #gameboard {
   display: grid;
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
   border: 2px solid black;
+  width: 300px;
 }
 
 .square {
@@ -22,13 +33,26 @@ body {
   padding-top: 25px;
   font-weight: bold;
   font-size: 40px;
-  text-shadow: 0 0 5px magenta, 0 0 10px rgb(255, 0, 174);
+  text-shadow: 0 0 4px rgb(210, 1, 116), 0 0 7px rgb(255, 0, 174);
 }
 
-/* CHOICES ------------------------------- */
+.x-shadow {
+}
+
+.o-shadow {
+}
+
+/* PLAYERS ------------------------------- */
 #choices {
   margin: 50px 20px;
   text-align: center;
+  display: flex;
+  border: 1px solid red;
+  gap: 20px;
+}
+
+.player {
+  border: 1px solid cyan;
 }
 
 .btn {
