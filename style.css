@@ -22,7 +22,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid magenta;
+  /* border: 1px solid magenta; */
 }
 #gameboard {
   display: grid;
@@ -38,14 +38,15 @@ h1 {
   padding-top: 25px;
   font-weight: bold;
   font-size: 40px;
-  /* text-shadow: 0 0 4px rgb(250, 129, 0), 0 0 7px rgb(255, 183, 0),
-    0 0 7px rgb(255, 183, 0); */
 }
 
-.x-shadow {
+.playerOneIconStyle {
+  text-shadow: 0 0 4px rgb(210, 1, 116), 0 0 7px rgb(255, 0, 174);
 }
 
-.o-shadow {
+.playerTwoIconStyle {
+  text-shadow: 0 0 4px rgb(250, 129, 0), 0 0 7px rgb(255, 183, 0),
+    0 0 7px rgb(255, 183, 0);
 }
 
 /* PLAYERS ------------------------------- */
@@ -53,12 +54,12 @@ h1 {
   margin: 50px 20px;
   text-align: center;
   display: flex;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   gap: 20px;
 }
 
 .player {
-  border: 1px solid cyan;
+  /* border: 1px solid cyan; */
 }
 
 .btn {
@@ -72,11 +73,11 @@ h1 {
   font-weight: bold;
 }
 
-#X:hover {
+#xBtn:hover {
   background: rgb(150, 3, 150);
 }
 
-#O:hover {
+#oBtn:hover {
   background: rgb(255, 162, 0);
 }
 
@@ -92,7 +93,7 @@ footer {
   width: 100%;
   color: whitesmoke;
   text-align: center;
-  position: bottom;
+  position: absolute;
   bottom: 0;
   height: 40px;
   margin-top: 170px;
