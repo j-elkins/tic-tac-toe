@@ -6,7 +6,8 @@ body {
   align-items: center;
   font-family: "Orbitron", "Gill Sans", Calibri, sans-serif;
   margin: 0;
-  background: url("/background.jpg");
+  background: url("https://j-elkins.github.io/tic-tac-toe/background"),
+    linear-gradient(to right, rgb(80, 0, 138), rgb(238, 164, 3));
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
