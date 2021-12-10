@@ -28,12 +28,14 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, 100px);
   grid-template-rows: repeat(3, 100px);
-  border: 2px solid black;
+  border: 1px solid rgba(255, 255, 255, 0.571);
+  box-shadow: 0px 0px 10px 5px rgba(245, 245, 245, 0.776);
+  background-color: black;
   width: 300px;
 }
 
 .square {
-  border: 1px solid black;
+  border: 1px solid rgba(255, 255, 255, 0.228);
   text-align: center;
   padding-top: 25px;
   font-weight: bold;
@@ -41,12 +43,13 @@ h1 {
 }
 
 .playerOneIconStyle {
-  text-shadow: 0 0 4px rgb(210, 1, 116), 0 0 7px rgb(255, 0, 174);
+  text-shadow: 0 0 4px rgb(210, 1, 116), 0 0 7px rgb(255, 0, 174),
+    0 0 10px rgb(255, 0, 174);
 }
 
 .playerTwoIconStyle {
   text-shadow: 0 0 4px rgb(250, 129, 0), 0 0 7px rgb(255, 183, 0),
-    0 0 7px rgb(255, 183, 0);
+    0 0 15px rgb(255, 183, 0);
 }
 
 /* PLAYERS ------------------------------- */
@@ -82,8 +85,8 @@ h1 {
 }
 
 .btn:active {
-  box-shadow: 2px 2px rgb(19, 1, 62);
-  transform: 2px 2px 4s;
+  box-shadow: 1px 1px rgb(19, 1, 62);
+  transform: translateY(4px);
 }
 
 /* FOOTER --------------------------------- */
@@ -96,8 +99,7 @@ footer {
   position: absolute;
   bottom: 0;
   height: 40px;
-  margin-top: 170px;
-  /* change top margin to percent based... */
+  margin-top: 2em;
   display: flex;
   align-items: center;
   justify-content: center;

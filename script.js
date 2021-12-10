@@ -1,5 +1,5 @@
 // create an object/class Gameboard containing key:value pairs
-const GameboardArray = {};
+let GameboardArray = {};
 
 // players click buttons with X or O to play their turn
 let playerIcon = "";
@@ -29,46 +29,89 @@ gameboard.addEventListener("click", (event) => {
   }
 
   console.log({ GameboardArray });
-  // checkForWinner();
+  checkForWinner();
 });
+
+// hardcode to test...
+
+// GameboardArray = {
+//   A0: "X",
+//   B0: "X",
+//   C0: "X",
+// };
 
 // after each turn check object to see if 3 in a row contain the same
 function checkForWinner() {
-  // check each row: if first cell not empty, move to next column a2
-  if (a1 !== "") {
-    if (a2 !== "") {
-      if (a3 !== "") {
-        // check if a1, a2, a3 have the same mark
-        // if (a1 === a2 === a3) {
-        congratulateWinner();
-        // } // else move to b1
-      }
-    } // else if a2 empty, move to b1
-    // if a1 empty, move to next row b1
-  } else if (b1 !== "") {
-    if (b2 !== "") {
-      if (b3 !== "") {
-        // check if b1, b2, b3 have the same mark
-        // if (b1 === b2 === b3) {
-        congratulateWinner();
-        // } // else move on to c1
-      }
-    } // else if b2 empty, move to c1
-    // if b1 empty, move to next row c1
-  } else if (c1 !== "") {
-    if (c2 !== "") {
-      if (c3 !== "") {
-        // check if c1, c2, c3 have the same mark
-        // if (c1 === c2 === c3) {
-        congratulateWinner();
-        // } // else back to a1 and check each column:
-      }
-    }
+  // check for winners in rows
+  if (
+    GameboardArray["A0"] &&
+    GameboardArray["A0"] == GameboardArray["A1"] &&
+    GameboardArray["A0"] == GameboardArray["A2"]
+  ) {
+    console.log(GameboardArray["A0"] + "is the winner");
   }
 
-  if (a1) {
+  if (
+    GameboardArray["B0"] &&
+    GameboardArray["B0"] == GameboardArray["B1"] &&
+    GameboardArray["B0"] == GameboardArray["B2"]
+  ) {
+    console.log(GameboardArray["B0"] + "is the winner");
+  }
+
+  if (
+    GameboardArray["C0"] &&
+    GameboardArray["C0"] == GameboardArray["C1"] &&
+    GameboardArray["C0"] == GameboardArray["C2"]
+  ) {
+    console.log(GameboardArray["C0"] + "is the winner");
+  }
+
+  // check for winners in columns
+  if (
+    GameboardArray["A0"] &&
+    GameboardArray["A0"] == GameboardArray["B0"] &&
+    GameboardArray["C0"]
+  ) {
+    console.log(GameboardArray["A0"] + " is the winner");
+  }
+
+  if (
+    GameboardArray["A1"] &&
+    GameboardArray["A1"] == GameboardArray["B1"] &&
+    GameboardArray["A1"] == GameboardArray["C1"]
+  ) {
+    console.log(GameboardArray["A1"] + " is the winner");
+  }
+
+  if (
+    GameboardArray["A2"] &&
+    GameboardArray["A2"] == GameboardArray["B2"] &&
+    GameboardArray["A2"] == GameboardArray["C2"]
+  ) {
+    console.log(GameboardArray["A2"] + " is the winner");
+  }
+
+  // check for winner diagonally
+  if (
+    GameboardArray["A0"] &&
+    GameboardArray["A0"] == GameboardArray["B1"] &&
+    GameboardArray["A0"] == GameboardArray["C2"]
+  ) {
+    console.log(GameboardArray["A0"] + "is the winner");
+  }
+
+  if (
+    GameboardArray["C0"] &&
+    GameboardArray["C0"] == GameboardArray["B1"] &&
+    GameboardArray["C0"] == GameboardArray["A2"]
+  ) {
+    console.log(GameboardArray["C0"] + "is the winner");
   }
 }
+
+checkForWinner();
+// check each row: if first cell is empty, move to next row b0
 
 // if 3 consecutive squares contain the same, game ends
 
@@ -82,4 +125,4 @@ function checkForWinner() {
 // eventually: play against computer
 // chooses randomly from empty remaining squares
 // eventually: choose randomly who starts? and/or previous winner?
-// eventually: how to make it choose "smarter" ?
+// eventually: how to make it choose "smarter"
