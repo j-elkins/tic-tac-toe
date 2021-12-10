@@ -82,7 +82,7 @@ function checkForWinner() {
   if (
     GameboardArray["A0"] &&
     GameboardArray["A0"] == GameboardArray["B0"] &&
-    GameboardArray["C0"]
+    GameboardArray["A0"] == GameboardArray["C0"]
   ) {
     playerWhoWon = GameboardArray["A0"];
     // console.log(GameboardArray["A0"] + " is the winner");
@@ -137,9 +137,24 @@ function checkForWinner() {
 }
 
 function itsATie() {
+  if (
+    GameboardArray["AO"] &&
+    GameboardArray["A1"] &&
+    GameboardArray["A2"] &&
+    GameboardArray["B0"] &&
+    GameboardArray["B1"] &&
+    GameboardArray["B2"] &&
+    GameboardArray["C0"] &&
+    GameboardArray["C1"] &&
+    GameboardArray["C2"]
+  ) {
+    console.log("All squares full");
+  }
   // if board contains values in all 9 squares and there's no winner
   // announceTie()
 }
+
+itsATie();
 
 // announce the winner based on which symbol the consecutive squares contain
 function announceWinner(winner) {
