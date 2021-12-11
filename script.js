@@ -159,24 +159,33 @@ itsATie();
 // announce the winner based on which symbol the consecutive squares contain
 function announceWinner(winner) {
   const announcement = document.querySelector("#choices");
-  announcement.textContent = "Congratulations! " + winner + " is the winner";
+  announcement.textContent =
+    "Congratulations! \r\n " + winner + " is the winner";
   announcement.classList.add("announcement");
+
+  // add a 'play again' button
+  const playAgain = document.querySelector("#playAgain");
+  const newGameBtn = document.createElement("div");
+  newGameBtn.classList.add("newGame");
+  newGameBtn.textContent = "Play again?";
+  newGameBtn.addEventListener("click", () => {
+    document.location.reload();
+  });
+  playAgain.appendChild(newGameBtn);
 
   if (playerIcon == "X") {
     announcement.classList.add("playerOneWins");
     gameboard.classList.add("playerOneWins");
+    newGameBtn.classList.add("playerOneWins");
   }
 
   if (playerIcon == "O") {
     announcement.classList.add("playerTwoWins");
     gameboard.classList.add("playerTwoWins");
+    newGameBtn.classList.add("playerTwoWins");
   }
 }
 
-// click 'start' button to begin
-
-// keep score on the side
-// add a 'play again' button
 // eventually: play against computer
 // chooses randomly from empty remaining squares
 // eventually: choose randomly who starts? and/or previous winner?
