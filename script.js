@@ -2,6 +2,8 @@
 let GameboardArray = {};
 let turnCount = 0;
 
+const gameboard = document.querySelector("#gameboard");
+
 // players click buttons with X or O to play their turn
 let playerIcon = "";
 let playerName = "";
@@ -14,6 +16,8 @@ xButton.addEventListener("click", (e) => {
 
   let input = document.querySelector("#playerOneName");
   playerName = input.value;
+
+  gameboard.classList.remove("disabled");
 });
 
 const oButton = document.querySelector("#oBtn");
@@ -23,10 +27,11 @@ oButton.addEventListener("click", (e) => {
 
   let input = document.querySelector("#playerTwoName");
   playerName = input.value;
+
+  gameboard.classList.remove("disabled");
 });
 
 // click to play turn: mark square X or O
-const gameboard = document.querySelector("#gameboard");
 gameboard.addEventListener("click", (event) => {
   let squareClicked = event.target;
 
@@ -54,7 +59,6 @@ function checkForWinner() {
   ) {
     playerWhoWon = GameboardArray["A0"];
     announceWinner(playerWhoWon);
-    gameboard.classList.add("disabled");
   }
 
   if (
@@ -64,7 +68,6 @@ function checkForWinner() {
   ) {
     playerWhoWon = GameboardArray["B0"];
     announceWinner(playerWhoWon);
-    gameboard.classList.add("disabled");
   }
 
   if (
@@ -74,7 +77,6 @@ function checkForWinner() {
   ) {
     playerWhoWon = GameboardArray["C0"];
     announceWinner(playerWhoWon);
-    gameboard.classList.add("disabled");
   }
 
   // check for winners in columns
@@ -85,7 +87,6 @@ function checkForWinner() {
   ) {
     playerWhoWon = GameboardArray["A0"];
     announceWinner(playerWhoWon);
-    gameboard.classList.add("disabled");
   }
 
   if (
@@ -95,7 +96,6 @@ function checkForWinner() {
   ) {
     playerWhoWon = GameboardArray["A1"];
     announceWinner(playerWhoWon);
-    gameboard.classList.add("disabled");
   }
 
   if (
@@ -105,7 +105,6 @@ function checkForWinner() {
   ) {
     playerWhoWon = GameboardArray["A2"];
     announceWinner(playerWhoWon);
-    gameboard.classList.add("disabled");
   }
 
   // check for winner diagonally
@@ -116,7 +115,6 @@ function checkForWinner() {
   ) {
     playerWhoWon = GameboardArray["A0"];
     announceWinner(playerWhoWon);
-    gameboard.classList.add("disabled");
   }
 
   if (
@@ -126,7 +124,6 @@ function checkForWinner() {
   ) {
     playerWhoWon = GameboardArray["C0"];
     announceWinner(playerWhoWon);
-    gameboard.classList.add("disabled");
   }
 
   itsATie();
