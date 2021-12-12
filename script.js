@@ -1,5 +1,6 @@
 // create Gameboard object to contain key:value pairs
 let GameboardArray = {};
+let turnCount = 0;
 
 // players click buttons with X or O to play their turn
 let playerIcon = "";
@@ -32,10 +33,11 @@ gameboard.addEventListener("click", (event) => {
   if (squareClicked.textContent == "") {
     squareClicked.textContent = playerIcon;
     squareClicked.classList.add(iconClass);
+
     GameboardArray[squareClicked.id] = playerName;
+    turnCount++;
   }
 
-  // console.log({ GameboardArray });
   checkForWinner();
 });
 
@@ -51,7 +53,6 @@ function checkForWinner() {
     GameboardArray["A0"] == GameboardArray["A2"]
   ) {
     playerWhoWon = GameboardArray["A0"];
-    // console.log(GameboardArray["A0"] + " is the winner");
     announceWinner(playerWhoWon);
     gameboard.classList.add("disabled");
   }
@@ -62,7 +63,6 @@ function checkForWinner() {
     GameboardArray["B0"] == GameboardArray["B2"]
   ) {
     playerWhoWon = GameboardArray["B0"];
-    // console.log(GameboardArray["B0"] + " is the winner");
     announceWinner(playerWhoWon);
     gameboard.classList.add("disabled");
   }
@@ -73,7 +73,6 @@ function checkForWinner() {
     GameboardArray["C0"] == GameboardArray["C2"]
   ) {
     playerWhoWon = GameboardArray["C0"];
-    // console.log(GameboardArray["C0"] + " is the winner");
     announceWinner(playerWhoWon);
     gameboard.classList.add("disabled");
   }
@@ -85,7 +84,6 @@ function checkForWinner() {
     GameboardArray["A0"] == GameboardArray["C0"]
   ) {
     playerWhoWon = GameboardArray["A0"];
-    // console.log(GameboardArray["A0"] + " is the winner");
     announceWinner(playerWhoWon);
     gameboard.classList.add("disabled");
   }
@@ -96,7 +94,6 @@ function checkForWinner() {
     GameboardArray["A1"] == GameboardArray["C1"]
   ) {
     playerWhoWon = GameboardArray["A1"];
-    // console.log(GameboardArray["A1"] + " is the winner");
     announceWinner(playerWhoWon);
     gameboard.classList.add("disabled");
   }
@@ -107,7 +104,6 @@ function checkForWinner() {
     GameboardArray["A2"] == GameboardArray["C2"]
   ) {
     playerWhoWon = GameboardArray["A2"];
-    // console.log(GameboardArray["A2"] + " is the winner");
     announceWinner(playerWhoWon);
     gameboard.classList.add("disabled");
   }
@@ -119,7 +115,6 @@ function checkForWinner() {
     GameboardArray["A0"] == GameboardArray["C2"]
   ) {
     playerWhoWon = GameboardArray["A0"];
-    // console.log(GameboardArray["A0"] + " is the winner");
     announceWinner(playerWhoWon);
     gameboard.classList.add("disabled");
   }
@@ -130,63 +125,67 @@ function checkForWinner() {
     GameboardArray["C0"] == GameboardArray["A2"]
   ) {
     playerWhoWon = GameboardArray["C0"];
-    // console.log(GameboardArray["C0"] + " is the winner");
     announceWinner(playerWhoWon);
     gameboard.classList.add("disabled");
   }
+
+  itsATie();
 }
 
+// if board contains values in all 9 squares and there's no winner, it's a tie
 function itsATie() {
-  if (
-    GameboardArray["AO"] &&
-    GameboardArray["A1"] &&
-    GameboardArray["A2"] &&
-    GameboardArray["B0"] &&
-    GameboardArray["B1"] &&
-    GameboardArray["B2"] &&
-    GameboardArray["C0"] &&
-    GameboardArray["C1"] &&
-    GameboardArray["C2"]
-  ) {
-    console.log("All squares full");
+  if (turnCount === 9) {
+    announceTie();
   }
-  // if board contains values in all 9 squares and there's no winner
-  // announceTie()
 }
-
-itsATie();
 
 // announce the winner based on which symbol the consecutive squares contain
+const announcement = document.querySelector("#choices");
+let whoWon = "";
+
 function announceWinner(winner) {
-  const announcement = document.querySelector("#choices");
   announcement.textContent =
     "Congratulations! \r\n " + winner + " is the winner";
   announcement.classList.add("announcement");
 
-  // add a 'play again' button
-  const playAgain = document.querySelector("#playAgain");
-  const newGameBtn = document.createElement("div");
-  newGameBtn.classList.add("newGame");
-  newGameBtn.textContent = "Play again?";
-  newGameBtn.addEventListener("click", () => {
-    document.location.reload();
-  });
-  playAgain.appendChild(newGameBtn);
-
   if (playerIcon == "X") {
     announcement.classList.add("playerOneWins");
     gameboard.classList.add("playerOneWins");
-    newGameBtn.classList.add("playerOneWins");
+    whoWon = "playerOneWins";
   }
 
   if (playerIcon == "O") {
     announcement.classList.add("playerTwoWins");
     gameboard.classList.add("playerTwoWins");
-    newGameBtn.classList.add("playerTwoWins");
+    whoWon = "playerTwoWins";
   }
+
+  addPlayAgainButton(whoWon);
+}
+
+// announce tie if there's no winner
+function announceTie() {
+  announcement.textContent = "It's a tie...";
+  announcement.classList.add("announcement");
+
+  whoWon = "itsATie";
+  addPlayAgainButton(whoWon);
+}
+
+// create 'Play again?' button to display at game end
+function addPlayAgainButton(winningPlayer) {
+  const playAgain = document.querySelector("#playAgain");
+  const newGameBtn = document.createElement("div");
+  newGameBtn.classList.add("newGame");
+  newGameBtn.classList.add(winningPlayer);
+  newGameBtn.textContent = "Play again?";
+  newGameBtn.addEventListener("click", () => {
+    document.location.reload();
+  });
+
+  playAgain.appendChild(newGameBtn);
 }
 
 // eventually: play against computer
-// chooses randomly from empty remaining squares
-// eventually: choose randomly who starts? and/or previous winner?
-// eventually: how to make it choose "smarter"
+// chooses randomly from empty remaining squares (easy)
+// eventually: how to make it choose "smarter" (hard)

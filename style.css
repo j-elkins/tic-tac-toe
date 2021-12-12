@@ -152,6 +152,9 @@ h1 {
   border-radius: 8px;
   margin-top: 100px;
   white-space: pre;
+  box-shadow: 0px 0px 10px 5px rgba(3, 249, 232, 0.776);
+  text-shadow: 0 0 4px rgba(3, 249, 232, 0.776),
+    0 0 4px rgba(3, 249, 232, 0.776);
 }
 
 .playerOneWins {
@@ -164,6 +167,12 @@ h1 {
   box-shadow: 0px 0px 10px 5px rgba(250, 129, 0, 0.8) !important;
   text-shadow: 0 0 4px rgb(250, 129, 0), 0 0 7px rgb(255, 183, 0),
     0 0 15px rgb(255, 183, 0);
+}
+
+.itsATie {
+  box-shadow: 0px 0px 10px 5px rgba(3, 249, 232, 0.776);
+  text-shadow: 0 0 4px rgba(3, 249, 232, 0.776),
+    0 0 4px rgba(3, 249, 232, 0.776);
 }
 
 .disabled {
